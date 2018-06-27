@@ -1,15 +1,20 @@
 import React, { Component, PropTypes } from 'react'
+import CoursesList from './CoursesList';
 
 class App extends Component {
 	constructor(...props){
 		super(...props)
-		this.state = {
 
+		this.state = {
+			courses: [
+				{ id: 1, name: 'React desde cero', teacher: 'Jonathan Mircha' },
+				{ id: 2, name: 'Drupal 8 desde cero', teacher: 'Alberto Quiroga' }
+			]
 		}
 	}
 	render(){
 		return(
-			<div>Hello React!</div>
+			<CoursesList />
 		)
 	}
 }
