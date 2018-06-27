@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import CoursesList from './CoursesList';
+import CourseAddForm from './CourseAddForm';
 
 class App extends Component {
 	constructor(...props){
@@ -19,23 +20,33 @@ class App extends Component {
 		//alert('Event on React')
 		e.preventDefault()
 
-		let form = e.target, 
+		let form = e.target,
+
+		/* Define variables en course */
 		course = {
 			id: form.id.value,
 			name: form.name.value,
 			teacher: form.teacher.value
 		}
+
 		this.setState({
+			/* Actualiza el estado (state) */
 			courses: this.state.courses.concat([course])
 		})
+
+		/* Resetea el Formulario */
+
+		form.reset()
 	}
 
 	render(){
 		return(
-			<CoursesList 
-				courses={this.state.courses} 
-				onAddCourse={this.handleOnAddCourse}
-			/>
+			<div>
+				{/* Add CourseAddForm.jsx */}
+				<CourseAddForm onAddCourse={this.handleOnAddCourse} />
+				{/* Add CoursesList.jsx */}
+				<CoursesList courses={this.state.courses} />
+			</div>
 		)
 	}
 }

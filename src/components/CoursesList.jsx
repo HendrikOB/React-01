@@ -3,12 +3,7 @@ import Course from './Course'
 
 const CoursesList = ( props ) => (
 	<div>
-		<form onSubmit={props.onAddCourse}>
-			<input type="text" placeholder="Nombre del Curso" name="name" required />
-			<input type="text" placeholder="profesor" name="teacher" required />
-			<input type="hidden" name="id" value={Math.floor(Math.random()*100)} />
-			<input type="submit" value="Guardar" />
-		</form>
+		
 		<ul>
 			{
 				props.courses.map(course => (
