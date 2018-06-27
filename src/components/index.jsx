@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import CoursesList from './CoursesList';
 import CourseAddForm from './CourseAddForm';
 
@@ -25,8 +26,9 @@ class App extends Component {
 		/* Define variables en course */
 		course = {
 			id: form.id.value,
-			name: form.name.value,
-			teacher: form.teacher.value
+			/* Agregando validacion con el operador ternario "?" */
+			name: ( form.name.value ) ? form.name.value : App.defaultProps.name,
+			teacher: (form.teacher.value ? form.teacher.value : App.defaultProps.teacher)
 		}
 
 		this.setState({
@@ -50,9 +52,17 @@ class App extends Component {
 		)
 	}
 }
+/* Definir los tipos de datos */
+App.propType = {
+	id: PropTypes.number.isRequired,
+	name: PropTypes.string.isRequired,
+	teacher: PropTypes.string.isRrequired
+}
 
-App.propType = {}
-
-App.defaultProps = {}
+/* Definir por defualt el valor de los datos */
+App.defaultProps = {
+	name: 'Curso Desconocido',
+	teacher: 'Profesor No Asignado'
+}
 
 export default App
