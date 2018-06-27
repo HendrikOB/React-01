@@ -8,13 +8,13 @@ class App extends Component {
 		this.state = {
 			courses: [
 				{ id: 1, name: 'React desde cero', teacher: 'Jonathan Mircha' },
-				{ id: 2, name: 'Drupal 8 desde cero', teacher: 'Alberto Quiroga' }
+				{ id: 2, name: 'Drupal 8 desde cero', teacher: 'Alberto Quiroga' },
 			]
 		}
 	}
 	render(){
 		return(
-			<CoursesList />
+			<CoursesList courses={this.state.courses} />
 		)
 	}
 }

@@ -1,20 +1,28 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Course from './Course'
 
-export default class CoursesList extends Component {
-	render() {
-		return(
-			<div>
-				<form>
-					<input type="text" placeholder="Nombre del Curso" name="name" required />
-					<input type="text" placeholder="profesor" name="teacher" required />
-					<input type="hidden" name="id" value={Math.floor(Math.random()*100)} />
-					<input type="submit" value="Guardar" />
-				</form>
-				<ul>
-					<li>Curso 1</li>
-					<li>Curso 2</li>
-				</ul>
-			</div>
-		)
-	}
-}
+const CoursesList = ( props ) => (
+	<div>
+		<form>
+			<input type="text" placeholder="Nombre del Curso" name="name" required />
+			<input type="text" placeholder="profesor" name="teacher" required />
+			<input type="hidden" name="id" value={Math.floor(Math.random()*100)} />
+			<input type="submit" value="Guardar" />
+		</form>
+		<ul>
+			{
+				props.courses.map(course => (
+					<Course
+						key={course.id}
+						id={course.id}
+						name={course.name}
+						teacher={course.teacher}
+					/>
+				))
+			}
+			
+		</ul>
+	</div>
+)
+
+export default CoursesList
