@@ -11,10 +11,31 @@ class App extends Component {
 				{ id: 2, name: 'Drupal 8 desde cero', teacher: 'Alberto Quiroga' },
 			]
 		}
+
+		this.handleOnAddCourse = this.handleOnAddCourse.bind(this)
 	}
+
+	handleOnAddCourse(e){
+		//alert('Event on React')
+		e.preventDefault()
+
+		let form = e.target, 
+		course = {
+			id: form.id.value,
+			name: form.name.value,
+			teacher: form.teacher.value
+		}
+		this.setState({
+			courses: this.state.courses.concat([course])
+		})
+	}
+
 	render(){
 		return(
-			<CoursesList courses={this.state.courses} />
+			<CoursesList 
+				courses={this.state.courses} 
+				onAddCourse={this.handleOnAddCourse}
+			/>
 		)
 	}
 }
