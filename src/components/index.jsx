@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uid from 'uid'
+import $ from 'jquery'
 import { courses } from '../data/courses.json'
 import PropTypes from 'prop-types';
 import CoursesList from './CoursesList';
@@ -43,11 +44,18 @@ class App extends Component {
 	}
 
 	fetchData(){
-		setTimeout((cb)=> this.setState({ courses:courses }), 500)
+		/* setTimeout((cb)=> this.setState({ courses:courses }), 500) */
+		$('#root')
+			.fadeOut(3000, ()=> this.setState( { courses:courses } ))
+			.fadeIn()
 	}
 
 	resetData(){
-		this.setState({ courses: [] })
+		/* this.setState({ courses: [] }) */
+
+		$('#root')
+			.fadeOut(3000, ()=> this.setState( { courses:[] } ))
+			.fadeIn()
 	}
 
 	componentDidMount() {
