@@ -2,7 +2,7 @@ import React from 'react'
 import Course from './Course'
 
 const CoursesList = ( props ) => (
-	<div>
+
 		
 		<ul>
 			{
@@ -17,7 +17,7 @@ const CoursesList = ( props ) => (
 			}
 			
 		</ul>
-	</div>
+
 )
 
 export default CoursesList
